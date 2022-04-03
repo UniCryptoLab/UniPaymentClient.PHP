@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="/Users/speerbuc/development/freelancer/UniPaymentClient-PHP/UniPaymentClientExample/tests" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="1.229841">
+    <testsuite name="UniPayment\Client\UniPaymentClientTest" file="/Users/speerbuc/development/freelancer/UniPaymentClient-PHP/UniPaymentClientExample/tests/UniPaymentClientTest.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="1.229841">
+      <testcase name="testCreateInvoice" class="UniPayment\Client\UniPaymentClientTest" classname="UniPayment.Client.UniPaymentClientTest" file="/Users/speerbuc/development/freelancer/UniPaymentClient-PHP/UniPaymentClientExample/tests/UniPaymentClientTest.php" line="60" assertions="1" time="1.229841">
+        <system-out>{
+    "title": "Test Invoice",
+    "description": "Test Desc",
+    "lang": "en-US",
+    "price_amount": "100",
+    "price_currency": "USD",
+    "pay_currency": "USDT",
+    "notify_url": "https:\/\/google.com",
+    "redirect_url": "https:\/\/google.com",
+    "order_id": "ORDER_123456",
+    "confirm_speed": "low"
+}*   Trying 2606:4700:3032::6815:7fc:443...
+* Connected to sandbox.unipayment.io (2606:4700:3032::6815:7fc) port 443 (#0)
+* ALPN, offering http/1.1
+* successfully set certificate verify locations:
+*  CAfile: /usr/local/etc/openssl@1.1/cert.pem
+*  CApath: none
+* SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384
+* ALPN, server accepted to use http/1.1
+* Server certificate:
+*  subject: C=US; ST=California; L=San Francisco; O=Cloudflare, Inc.; CN=sni.cloudflaressl.com
+*  start date: Mar  1 00:00:00 2022 GMT
+*  expire date: Feb 28 23:59:59 2023 GMT
+*  subjectAltName: host "sandbox.unipayment.io" matched cert's "*.unipayment.io"
+*  issuer: C=US; O=Cloudflare, Inc.; CN=Cloudflare Inc ECC CA-3
+*  SSL certificate verify ok.
+&gt; POST /api/invoice/create HTTP/1.1&#13;
+Host: sandbox.unipayment.io&#13;
+User-Agent: UniPaymentClient/1.0.0/php&#13;
+Accept: */*&#13;
+Content-Type: application/json&#13;
+Authorization: Hmac cee1b9e2-d90c-4b63-9824-d621edb38012:CgP6c7UGHV+c5EC8JDRlvszYy5VODPScG4mumMrYOJk=:3262420381ec1c8:1648493441&#13;
+Content-Length: 314&#13;
+&#13;
+* old SSL session ID is stale, removing
+* Mark bundle as not supporting multiuse
+&lt; HTTP/1.1 200 OK&#13;
+&lt; Date: Mon, 28 Mar 2022 18:50:43 GMT&#13;
+&lt; Content-Type: application/json; charset=utf-8&#13;
+&lt; Transfer-Encoding: chunked&#13;
+&lt; Connection: keep-alive&#13;
+&lt; api-supported-versions: 1.0&#13;
+&lt; CF-Cache-Status: DYNAMIC&#13;
+&lt; Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"&#13;
+&lt; Report-To: {"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=HmYEksLNEtw385RJi7cTWfVmsNeAewHKU2sjhn4F%2BNEp%2BBN3cFNtEkLA5LcN%2FS6YdJ%2BTDCx384Kfy5vE8kRnnk%2F8xJnLqhPsJbwMetAMSR8KRPkZxVwesIBw0pLenqC6zSpueTLwwYYcyiLnXAsGEzYFY6g%3D"}],"group":"cf-nel","max_age":604800}&#13;
+&lt; NEL: {"success_fraction":0,"report_to":"cf-nel","max_age":604800}&#13;
+&lt; Server: cloudflare&#13;
+&lt; CF-RAY: 6f328d908b0f99f3-CDG&#13;
+&lt; alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400&#13;
+&lt; &#13;
+* Connection #0 to host sandbox.unipayment.io left intact
+</system-out>
+      </testcase>
+    </testsuite>
+  </testsuite>
+</testsuites>

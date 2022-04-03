@@ -1,0 +1,1 @@
+{"version":1,"defects":{"UniPayment\\Client\\UniPaymentClientTest::testCreateInvoice":4},"times":{"UniPayment\\Client\\UniPaymentClientTest::testQueryInvoice":0.719,"UniPayment\\Client\\UniPaymentClientTest::testCreateInvoice":1.23}}
