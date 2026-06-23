@@ -61,20 +61,40 @@ class ApiClient
                     'response' => $body,
                 ];
             }
-            throw new UnipaymentSDKException($json['error'], $statusCode);
+            throw new UnipaymentSDKException($this->extractErrorMessage($body, $json, 'Request failed'), $statusCode);
         } catch (RequestException|GuzzleException $e) {
             $statusCode = $e->getCode();
-            if ($e->hasResponse()) {
+            if ($e instanceof RequestException && $e->hasResponse()) {
                 $response = $e->getResponse();
                 $statusCode = $response->getStatusCode();
                 $body = $response->getBody()->getContents();
                 $json = json_decode($body, true);
-                if (isset($json['msg']) && $json['msg']) {
-                    throw new UnipaymentSDKException($json['msg'], $statusCode);
-                }
+                throw new UnipaymentSDKException($this->extractErrorMessage($body, $json, $e->getMessage()), $statusCode);
             }
             throw new UnipaymentSDKException($e->getMessage(), $statusCode);
         }
+    }
+
+    private function extractErrorMessage(string $body, $json, string $fallback): string
+    {
+        if (is_array($json)) {
+            foreach (['msg', 'error', 'message'] as $key) {
+                if (isset($json[$key]) && is_scalar($json[$key]) && $json[$key] !== '') {
+                    return (string)$json[$key];
+                }
+            }
+        }
+
+        if (is_scalar($json) && $json !== '') {
+            return (string)$json;
+        }
+
+        $trimmedBody = trim($body);
+        if ($trimmedBody !== '') {
+            return $trimmedBody;
+        }
+
+        return $fallback;
     }
 
     /**
